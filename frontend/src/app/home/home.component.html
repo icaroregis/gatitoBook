@@ -1,1 +1,17 @@
-<p>home works!</p>
+<!-- col-md-6 => Estou pegando metade do grid que é de 12col -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mb-2">
+      <img
+        class="img-fluid d-none d-sm-block"
+        [src]="source"
+        alt="Imagem de um gato, logo da aplicação"
+      />
+    </div>
+
+    <div class="col-md-6">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
