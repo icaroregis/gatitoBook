@@ -7,6 +7,7 @@
         type="text"
         class="form-control"
         placeholder="Nome do usuário"
+        name="name"
         formControlName="name"
       />
     </div>
@@ -16,11 +17,12 @@
         type="password"
         class="form-control"
         placeholder="Senha"
+        name="password"
         formControlName="password"
       />
     </div>
 
-    <button type="submit" class="btn btn-primary container" (click)="getData()">
+    <button type="submit" class="btn btn-primary container" (click)="login()">
       Login
     </button>
   </form>
