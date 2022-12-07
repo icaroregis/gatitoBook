@@ -10,6 +10,11 @@
         name="name"
         formControlName="name"
       />
+
+      <app-message
+        *ngIf="fg.get('name')?.invalid && fg.get('name')?.touched"
+        message="Oops, É necessário informar um nome de usuário!!!"
+      ></app-message>
     </div>
 
     <div class="form-group mb-4">
@@ -20,9 +25,19 @@
         name="password"
         formControlName="password"
       />
+
+      <app-message
+        *ngIf="fg.get('password')?.invalid && fg.get('password')?.touched"
+        message="Oops, É necessário informar uma senha!!!"
+      ></app-message>
     </div>
 
-    <button type="submit" class="btn btn-primary container" (click)="login()">
+    <button
+      type="submit"
+      class="btn btn-primary container"
+      (click)="login()"
+      [disabled]="fg.invalid"
+    >
       Login
     </button>
   </form>

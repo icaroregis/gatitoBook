@@ -2,6 +2,7 @@ import { UserAuthentication } from 'src/app/authentication/interfaces/user-authe
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,8 @@ import { Component } from '@angular/core';
 export class LoginComponent {
   constructor(
     private fb: FormBuilder,
-    private service: AuthenticationService
+    private service: AuthenticationService,
+    private router: Router
   ) {}
   ngOnInit(): void {}
 
@@ -21,11 +23,6 @@ export class LoginComponent {
   });
 
   login() {
-    if (this.fg.invalid) {
-      alert('Oops, Por Gentileza, preencher todos os campos!!');
-      return;
-    }
-
     const object: UserAuthentication = {
       userName: this.fg.get('name')?.value,
       password: this.fg.get('password')?.value,
@@ -34,7 +31,7 @@ export class LoginComponent {
     if (object) {
       this.service.userAuthentication(object).subscribe({
         next: () => {
-          console.log('Autenticado com sucesso!');
+          this.router.navigate(['animals']);
         },
         error: (error) => {
           alert('Oops, Usuário ou senha inválidos!!');
