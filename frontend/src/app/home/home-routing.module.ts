@@ -4,12 +4,16 @@ import { RouterModule, Routes } from '@angular/router';
 //components
 import { HomeComponent } from './home.component';
 import { LoginComponent } from './login/login.component';
+import { NovoUsuarioComponent } from './novo-usuario/novo-usuario.component';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    children: [{ path: '', component: LoginComponent }],
+    children: [
+      { path: '', component: LoginComponent },
+      { path: 'novousuario', component: NovoUsuarioComponent },
+    ],
   },
 ];
 
